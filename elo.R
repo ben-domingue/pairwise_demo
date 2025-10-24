@@ -14,7 +14,7 @@ for (i in 1:nrow(z)) L[[i]]<-data.frame(team=c(z$team.A[i],z$team.B[i]),
 z<-data.frame(do.call("rbind",L))
 L<-split(z,z$team)
 
-par(mfrow=c(1,2),mgp=c(2,1,0),mar=c(3,3,1,1))
+par(mfrow=c(2,1),mgp=c(2,1,0),mar=c(3,3,1,1))
 plot(NULL,xlim=c(min(z$date),1.05*max(z$date)),ylim=range(z$elo))
 for (i in 1:length(L)) {
     lines(L[[i]]$date,L[[i]]$elo)
