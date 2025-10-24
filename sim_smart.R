@@ -76,6 +76,8 @@ for (n in c(100,250)) {
 cols<-colorRampPalette(c("blue", "red"))( length(out[[1]]$pairs) )
 par(mfrow=c(2,1),mgp=c(2,1,0),mar=c(3,3,1.5,2),oma=rep(.5,4))
 pf<-function(x,y,...) {
+    y<-as.numeric(y)
+    x<-as.numeric(x)
     m<-loess(y~x)
     yy<-predict(m,se=TRUE)
     lines(x,yy$fit,lwd=3,...)
@@ -89,4 +91,5 @@ for (ii in 1:length(out)) {
     pairs<-out[[ii]]$pairs
     for (i in 1:length(pairs)) pf(pairs[[i]][,2],pairs[[i]][,3],col=cols[i])
 }
-legend("bottomright",bty='n',names(pairs),lwd=2,col=cols,title=expression(nu))
+legend("bottomright",bty='n',names(pairs),lwd=2,col=cols)
+
